@@ -1,4 +1,4 @@
-using Emlak_Dapper_UI.Models;
+﻿using Emlak_Dapper_UI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
