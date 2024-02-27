@@ -1,4 +1,6 @@
+
 ﻿namespace Emlak_Dapper_Api.Dtos.KategoriDtos
+
 {
     public class KategoriGuncelleDto
     {

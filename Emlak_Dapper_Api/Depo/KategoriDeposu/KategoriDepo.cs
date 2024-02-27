@@ -1,7 +1,6 @@
 ﻿using Emlak_Dapper_Api.Dtos.KategoriDtos;
 using Emlak_Dapper_Api.Models.DapperContext;
 using Dapper;
-using Emlak_Dapper_Api.Dtos.KategoriDto;
 
 
 namespace Emlak_Dapper_Api.Depo.KategoriDeposu
@@ -13,8 +12,6 @@ namespace Emlak_Dapper_Api.Depo.KategoriDeposu
         {
             _context = context;
         }
-
-
 
         public async Task<List<KategoriSonucDto>> GetAllKategoriAsync()
         {
@@ -72,9 +69,18 @@ namespace Emlak_Dapper_Api.Depo.KategoriDeposu
 
             }
         }
+        public async Task<KategoriIDGetirDto> KategoriGetir(int id)
+        {
+            string query = "Select * From Kategori Where KategoriID=@KategoriID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@KategoriID", id);
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryFirstOrDefaultAsync<KategoriIDGetirDto>(query, parameters);
+                return values;
+            }
+        }
     }
 }
         
-    
-
 

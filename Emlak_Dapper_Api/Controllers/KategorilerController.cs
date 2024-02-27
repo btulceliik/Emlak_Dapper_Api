@@ -1,5 +1,4 @@
 ﻿using Emlak_Dapper_Api.Depo.KategoriDeposu;
-using Emlak_Dapper_Api.Dtos.KategoriDto;
 using Emlak_Dapper_Api.Dtos.KategoriDtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +22,7 @@ namespace Emlak_Dapper_Api.Controllers
             var values = await _kategoriDepo.GetAllKategoriAsync();
             return Ok(values);
         }
+
         [HttpPost]
         public async Task<IActionResult> KategoriOlustur(KategoriOlusturDto kategoriOlusturDto)
         {
@@ -46,7 +46,15 @@ namespace Emlak_Dapper_Api.Controllers
             return Ok("Kategori başarıyla günellendi. ");
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> KategoriGetir(int id)
+        {
+            var value = await _kategoriDepo.KategoriGetir(id);
+            return Ok(value);
         }
+
+
+    }
 
 
     }
