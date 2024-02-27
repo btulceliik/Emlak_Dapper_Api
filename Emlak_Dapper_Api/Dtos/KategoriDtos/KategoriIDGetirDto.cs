@@ -1,6 +1,6 @@
 ﻿namespace Emlak_Dapper_Api.Dtos.KategoriDtos
 {
-    public class KategoriGuncelleDto
+    public class KategoriIDGetirDto
     {
         public int KategoriID { get; set; }
         public string KategoriIsim { get; set; }
