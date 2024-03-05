@@ -27,7 +27,8 @@ namespace Emlak_Dapper_Api.Depo.KategoriDeposu
         // Yeni bir kategori oluşturan metot
         public async void KategoriOlustur(KategoriOlusturDto kategoriDto)
         {
-            string query = "insert into Kategori (KategoriIsim, KategoriDurum) values (@kategoriIsim,@kategoriDurum)"; // Yeni kategori eklemek için SQL sorgusu
+            string query = "insert into Kategori (KategoriIsim, KategoriDurum) values (@kategoriIsim,@kategoriDurum)"; 
+            // Yeni kategori eklemek için SQL sorgusu
             var parameters = new DynamicParameters();
             parameters.Add("@kategoriIsim", kategoriDto.KategoriIsim); // Parametreler eklenir
             parameters.Add("@kategoriDurum", true);
@@ -40,7 +41,8 @@ namespace Emlak_Dapper_Api.Depo.KategoriDeposu
         // Bir kategoriyi silen metot
         public async void KategoriSil(int id)
         {
-            string query = "Delete From Kategori Where KategoriID= @kategoriID"; // Belirli bir ID'ye sahip kategoriyi silen SQL sorgusu
+            string query = "Delete From Kategori Where KategoriID= @kategoriID"; 
+            // Belirli bir ID'ye sahip kategoriyi silen SQL sorgusu
             var parameters = new DynamicParameters();
             parameters.Add("@kategoriID", id); // Parametre eklenir
             using (var connections = _context.CreateConnection())
@@ -53,7 +55,8 @@ namespace Emlak_Dapper_Api.Depo.KategoriDeposu
         // Bir kategoriyi güncelleyen metot
         public async void KategoriGuncelle(KategoriGuncelleDto kategoriDto)
         {
-            string query = " Update Kategori Set KategoriIsim=@kategoriIsim, KategoriDurum= @kategoriDurum Where KategoriID= @kategoriID"; // Belirli bir ID'ye sahip kategoriyi güncelleyen SQL sorgusu
+            string query = " Update Kategori Set KategoriIsim=@kategoriIsim, KategoriDurum= @kategoriDurum Where KategoriID= @kategoriID"; 
+            // Belirli bir ID'ye sahip kategoriyi güncelleyen SQL sorgusu
             var parameters = new DynamicParameters();
             parameters.Add("@kategoriIsim", kategoriDto.KategoriIsim); // Parametreler eklenir
             parameters.Add("@kategoriDurum", kategoriDto.KategoriDurum);
@@ -67,13 +70,17 @@ namespace Emlak_Dapper_Api.Depo.KategoriDeposu
         // Belirli bir ID'ye sahip kategoriyi getiren metot
         public async Task<KategoriIDGetirDto> KategoriGetir(int id)
         {
-            string query = "Select * From Kategori Where KategoriID=@KategoriID"; // Belirli bir ID'ye sahip kategoriyi getiren SQL sorgusu
+            string query = "Select * From Kategori Where KategoriID=@KategoriID"; 
+            // Belirli bir ID'ye sahip kategoriyi getiren SQL sorgusu
             var parameters = new DynamicParameters();
-            parameters.Add("@KategoriID", id); // Parametre eklenir
+            parameters.Add("@KategoriID", id);
+            // Parametre eklenir
             using (var connection = _context.CreateConnection())
             {
-                var values = await connection.QueryFirstOrDefaultAsync<KategoriIDGetirDto>(query, parameters); // Sorgu sonucunda dönen veriler alınır
-                return values; // Veri geri döndürülür
+                var values = await connection.QueryFirstOrDefaultAsync<KategoriIDGetirDto>(query, parameters); 
+                // Sorgu sonucunda dönen veriler alınır
+                return values; 
+                // Veri geri döndürülür
             }
         }
     }

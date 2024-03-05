@@ -48,7 +48,7 @@ namespace Emlak_Dapper_Api.Controllers
             return Ok("Kategori başarıyla günellendi. "); // Başarılı yanıt döndür
         }
 
-        // Belirli bir kategoriyi getiren endpoint
+        // Belirli bir kategoriyi idsine göre getiren endpoint
         [HttpGet("{id}")]
         public async Task<IActionResult> KategoriGetir(int id)
         {
