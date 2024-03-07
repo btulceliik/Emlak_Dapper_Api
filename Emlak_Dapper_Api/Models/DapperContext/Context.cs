@@ -13,10 +13,10 @@ namespace Emlak_Dapper_Api.Models.DapperContext
         {
             _configuration = configuration; // Dependency Injection ile gelen IConfiguration nesnesi
                                             // _configuration alanına atanır
-            _connectionString = _configuration.GetConnectionString("connection"); // Yapılandırma bilgilerinden "connection" adlı bağlantı dizesi alınır
-        }
 
-        // Bağlantı oluşturmak için genel (public) bir metot
+            _connectionString = _configuration.GetConnectionString("connection"); 
+            // Yapılandırma bilgilerinden "connection" adlı bağlantı dizesi alınır
+        }
         public IDbConnection CreateConnection() => new SqlConnection(_connectionString); 
         // SqlConnection kullanılarak yeni bir bağlantı oluşturulur ve geri döndürülür
     }

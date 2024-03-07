@@ -4,7 +4,7 @@ using Emlak_Dapper_Api.Models.DapperContext;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Hizmetleri ekle.
 builder.Services.AddTransient<Context>();
 builder.Services.AddTransient<IKategoriDepo, KategoriDepo>();
 builder.Services.AddTransient<IUrunDepo, UrunDepo>();

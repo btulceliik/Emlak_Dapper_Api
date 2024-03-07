@@ -9,7 +9,6 @@ namespace Emlak_Dapper_Api.Depo.KategoriDeposu
     {
         Task<List<KategoriSonucDto>> GetAllKategoriAsync();
 
-
         void KategoriOlustur(KategoriOlusturDto kategoriDto);
 
         void KategoriSil(int id);

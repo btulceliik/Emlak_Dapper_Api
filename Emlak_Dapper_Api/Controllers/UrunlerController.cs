@@ -33,3 +33,4 @@ namespace Emlak_Dapper_Api.Controllers
 
     }
 }
+

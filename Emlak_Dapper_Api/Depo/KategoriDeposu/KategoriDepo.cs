@@ -19,7 +19,8 @@ namespace Emlak_Dapper_Api.Depo.KategoriDeposu
             string query = "Select * From Kategori"; // Tüm kategorileri getiren SQL sorgusu
             using (var connection = _context.CreateConnection())
             {
-                var values = await connection.QueryAsync<KategoriSonucDto>(query); // Sorgu sonucunda dönen veriler alınır
+                var values = await connection.QueryAsync<KategoriSonucDto>(query);
+               // Sorgu sonucunda dönen veriler alınır
                 return values.ToList(); // Veriler List<KategoriSonucDto> olarak dönüştürülür ve geri döndürülür
             }
         }
@@ -55,7 +56,8 @@ namespace Emlak_Dapper_Api.Depo.KategoriDeposu
         // Bir kategoriyi güncelleyen metot
         public async void KategoriGuncelle(KategoriGuncelleDto kategoriDto)
         {
-            string query = " Update Kategori Set KategoriIsim=@kategoriIsim, KategoriDurum= @kategoriDurum Where KategoriID= @kategoriID"; 
+            string query = " Update Kategori Set KategoriIsim=@kategoriIsim, KategoriDurum= @kategoriDurum " +
+                "Where KategoriID= @kategoriID"; 
             // Belirli bir ID'ye sahip kategoriyi güncelleyen SQL sorgusu
             var parameters = new DynamicParameters();
             parameters.Add("@kategoriIsim", kategoriDto.KategoriIsim); // Parametreler eklenir

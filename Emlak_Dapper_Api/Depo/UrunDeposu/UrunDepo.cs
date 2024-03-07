@@ -27,8 +27,7 @@ namespace Emlak_Dapper_Api.Depo.UrunDeposu
         {
             //Urun tablosundan UrunID, Baslik, Fiyat, Sehir, Ilce ve Kategori tablosundan KategoriIsim alanlarını içerecek şekilde
             //"UrunKategori" sütununun "KategoriID" sütunuyla eşleştiği her bir kaydı birleştirir. 
-            string query = "Select UrunID, Baslik, Fiyat, Sehir, Ilce, KategoriIsim From Urun" +
-                " inner join Kategori on Urun.UrunKategori= Kategori.KategoriID  ";
+            string query = "Select UrunID, Baslik, Fiyat, Sehir, Ilce, KategoriIsim From Urun inner join Kategori on Urun.UrunKategori= Kategori.KategoriID  ";
 
             // Entity Framework Context üzerinden bağlantı oluştur
             using (var connection = _context.CreateConnection())
