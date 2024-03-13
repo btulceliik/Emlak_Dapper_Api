@@ -8,11 +8,11 @@ Author URL: http://w3layouts.com
 -->
 <!doctype html>
 <html lang="tr">
-@await Component.InvokeAsync("_HeaderViewComponentPartial")
+@await Component.InvokeAsync("_BaslangicGorunumu")
 <body>
 
 <!--header-->
-    @await Component.InvokeAsync("_NavbarViewComponentPartial")
+    @await Component.InvokeAsync("_GorevCubugu")
 <!--/header-->
 
 <section class="w3l-about-breadcrumb">
@@ -26,10 +26,10 @@ Author URL: http://w3layouts.com
     @RenderBody()
 <!-- //contacts -->
  <!-- footers 20 -->
- @await Component.InvokeAsync("_DefaultFooterComponentPartial")
+    @await Component.InvokeAsync("_AnaSayfaAltBilgi")
 
 <!-- jQuery and Bootstrap JS -->
-    @await Component.InvokeAsync("_DefaultScriptComponentPartial")
+    @await Component.InvokeAsync("_AnaSayfaScript")
 </body>
 
 </html>

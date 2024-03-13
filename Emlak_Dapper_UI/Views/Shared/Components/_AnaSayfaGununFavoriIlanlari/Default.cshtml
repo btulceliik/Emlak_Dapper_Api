@@ -1,0 +1,30 @@
+﻿@model List<Emlak_Dapper_UI.Dtos.UrunDtos.UrunDepoDtos>
+
+<section class="locations-1" id="locations">
+    <div class="locations py-5">
+        <div class="container py-lg-5 py-md-4 py-2">
+            <div class="heading text-center mx-auto">
+                <h3 class="title-big">Günün Favori İlanları</h3>
+            </div>
+            <div class="row pt-md-5 pt-4">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <a href="property-single.html">
+                            <div class="box16">
+                                <div class="rentext-listing-category"><span>@item.tip</span><span>@item.kategoriIsim</span></div>
+                                <img class="img-fluid" style="height:220px; width:700px" src="@item.kapakGorsel" alt="">
+                                <div class="box-content">
+                                    <h3 class="title">₺ @item.fiyat</h3>
+                                    <span class="post"> @item.adres  @item.ilce  - @item.sehir </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <br/>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
