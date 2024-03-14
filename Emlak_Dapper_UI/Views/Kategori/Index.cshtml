@@ -22,14 +22,25 @@
 							</tr>
 						</thead>
 						<tbody>
-							@forech(var item in Model){
+							@foreach(var item in Model)
+							{
 							<tr>
 								<th scope="row">@item.KategoriID</th>
 								<td>@item.KategoriIsim</td>
-								<td>@item.KategoriDurum</td>
-								<td>jhon@email.com</td>
-								<td><a href="#" class="btn btn-outline-danger">Sil</a> </td>
-								<td><a href="#" class="btn btn-outline-succeess">Güncelle</a> </td>
+									<td>
+										@if (item.KategoriDurum)
+										{
+											<span>Aktif</span>
+										}
+										else
+										{
+											<span >Pasif</span>
+										}
+									</td>
+
+									<td><a href="#" class="btn btn-outline-danger">Sil</a></td>
+									<td><a href="#" class="btn btn-outline-success">Güncelle</a></td>
+
 
 							</tr>
 							}
