@@ -6,6 +6,7 @@ namespace Emlak_Dapper_Api.Depo.UrunDeposu
     {
         Task<List<UrunSonucDto>> GetAllUrunAsync();
         Task<List<UrunSonucVeKategoriDto>> GetAllUrunVeKategoriAsync();
+
     
     }
 }

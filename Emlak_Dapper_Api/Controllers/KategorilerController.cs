@@ -33,7 +33,7 @@ namespace Emlak_Dapper_Api.Controllers
         }
 
         // Belirli bir kategoriyi silen endpoint
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> KategoriSil(int id)
         {
             _kategoriDepo.KategoriSil(id); // Belirli bir kategoriyi sil

@@ -17,7 +17,9 @@ namespace Emlak_Dapper_UI.ViewComponents.AnaSayfa
         {
             var client= _httpClientFactory.CreateClient();
             var client2 = _httpClientFactory.CreateClient();
+            //Biz Kimiz Detay kısmına istek gönderme
             var responseMessage = await client.GetAsync("https://localhost:44378/api/BizKimizDetaylar");
+            //Biz Kimiz Hizmetler kısmına istek gönderme
             var responseMessage2 = await client2.GetAsync("https://localhost:44378/api/BizKimizHizmetler");
 
             if (responseMessage.IsSuccessStatusCode && responseMessage2.IsSuccessStatusCode) 

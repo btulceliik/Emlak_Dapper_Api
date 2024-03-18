@@ -2,7 +2,7 @@
 
 namespace Emlak_Dapper_UI.ViewComponents.Layout
 {
-    public class _GorevCubugu: ViewComponent
+    public class _GezinmeCubugu: ViewComponent
     {
         public IViewComponentResult Invoke()
         {

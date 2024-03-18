@@ -25,7 +25,7 @@ namespace Emlak_Dapper_UI.ViewComponents.AnaSayfa
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();//gelen içeriği string olarak oku
                 var values = JsonConvert.DeserializeObject<List<AnaSayfaHizmetSonucDto>>(jsonData);
-                //Json değeri okuyup metin formatına dönüştürme işlemim jsondan gelen datayı UrunDepoDtos ile eşleştir
+                //Json değeri okuyup metin formatına dönüştürme işlemim jsondan gelen datayı  eşleştir
 
                 return View(values);
 

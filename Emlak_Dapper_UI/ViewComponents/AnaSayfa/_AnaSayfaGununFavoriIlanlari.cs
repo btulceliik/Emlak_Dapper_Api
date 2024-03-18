@@ -24,7 +24,7 @@ namespace Emlak_Dapper_UI.ViewComponents.AnaSayfa
                 //eğer işlem başarılıysa 200 ile 299 arasında
             {
                 var jsonData=await responseMessage.Content.ReadAsStringAsync();//gelen içeriği string olarak oku
-                var values = JsonConvert.DeserializeObject<List<UrunDepoDtos>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<UrunSonucDto>>(jsonData);
                 //Json değeri okuyup metin formatına dönüştürme işlemim jsondan gelen datayı UrunDepoDtos ile eşleştir
 
                 return View (values);
