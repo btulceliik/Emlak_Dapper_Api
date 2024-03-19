@@ -6,10 +6,10 @@ namespace Emlak_Dapper_Api.Depo.PersonelDeposu
 	{
 		Task<List<PersonelSonucDto>> GetAllPersonelAsync();
 
-		void PersonelOlustur(PersonelOlusturDto personellDto);
+		void PersonelOlustur(PersonelOlusturDto personelOlusturDto);
 
 		void PersonelSil(int id);
-		void PersonelGuncelle(PersonelGuncelleDto personellDto);
+		void PersonelGuncelle(PersonelGuncelleDto personelGuncelleDto);
 		Task<PersonelIDGetirDto> PersonelGetir(int id);
 
 

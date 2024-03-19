@@ -2,6 +2,7 @@ using Emlak_Dapper_Api.Depo.AnaSayfaHizmetDeposu;
 using Emlak_Dapper_Api.Depo.BizKimizDeposu;
 using Emlak_Dapper_Api.Depo.HizmetDeposu;
 using Emlak_Dapper_Api.Depo.KategoriDeposu;
+using Emlak_Dapper_Api.Depo.PersonelDeposu;
 using Emlak_Dapper_Api.Depo.PopülerLokasyonDeposu;
 using Emlak_Dapper_Api.Depo.ReferansDeposu;
 using Emlak_Dapper_Api.Depo.UrunDeposu;
@@ -18,6 +19,7 @@ builder.Services.AddTransient<IBizKimizHizmetDepo, BizKimizHizmetDepo>();
 builder.Services.AddTransient<IAnaSayfaHizmetDepo, AnaSayfaHizmetDepo>();
 builder.Services.AddTransient<IPopülerLokasyonDepo,PopülerLokasyonDepo>();
 builder.Services.AddTransient<IReferansDepo, ReferansDepo>();
+builder.Services.AddTransient<IPersonelDepo, PersonelDepo>();
 
 
 builder.Services.AddControllers();
