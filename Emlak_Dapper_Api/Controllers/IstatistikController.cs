@@ -46,6 +46,13 @@ namespace Emlak_Dapper_Api.Controllers
             return Ok(_istatistikDepo.OrtalamaSatılıkUrunFiyat());
         }
 
+        [HttpGet("OrtalamaOdaSayısı")]
+        public IActionResult OrtalamaOdaSayısı()
+        {
+            return Ok(_istatistikDepo.OrtalamaOdaSayısı());
+        }
+
+
         [HttpGet("KategoriSayısı")]
         public IActionResult KategoriSayısı()
         {
