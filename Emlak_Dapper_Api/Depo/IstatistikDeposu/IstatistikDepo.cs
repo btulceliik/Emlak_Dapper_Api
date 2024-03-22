@@ -35,72 +35,143 @@ namespace Emlak_Dapper_Api.Depo.IstatistikDeposu
 
         public int DaireSayısı()
         {
-            throw new NotImplementedException();
+            string query = "Select Count(*) From Urun where Baslik like '%Daire%' ";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
         public string EnEskiBina()
         {
-            throw new NotImplementedException();
+            string query = "Select Top(1) YapımYili From UrunDetay order by YapımYili Asc";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
         public string EnYeniBina()
         {
-            throw new NotImplementedException();
+            string query = "Select Top(1) YapımYili From UrunDetay order by YapımYili Desc";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
         public int FarklıSehirSayısı()
         {
-            throw new NotImplementedException();
+            string query = "Select  Count(Distinct (Sehir)) From Urun";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
-        public int KategoriSayısı()
+            public int KategoriSayısı()
         {
-            throw new NotImplementedException();
+            string query = "Select Count(*) From Kategori";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
-        public string MaxKategoriIsimSayısı()
+            public string MaxKategoriIsimSayısı()
         {
-            throw new NotImplementedException();
+            string query = "Select top (1) KategoriIsim, Count (*) From Urun inner join Kategori On Urun.UrunKategori=Kategori.KategoriID Group By KategoriIsim order by Count(*) Desc ";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
         public string MaxPersonelIsimSayısı()
         {
-            throw new NotImplementedException();
+            string query = "Select PersonelIsim,Count(*) 'ilan_Sayısı' From Urun inner join Personel on Urun.PersonelID=Personel.PersonelID Group By PersonelIsim Order By ilan_Sayısı Desc ";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
-        public string MaxSehirSayısı()
+            public string MaxSehirSayısı()
         {
-            throw new NotImplementedException();
+            string query = "Select top(1) Sehir, Count(*) AS  'ilan_Sayısı' From Urun Group By Sehir order by ilan_Sayısı Desc";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
-        public decimal OrtalamaKiralıkUrun()
+        public decimal OrtalamaKiralıkUrunFiyat()
         {
-            throw new NotImplementedException();
+            string query = "Select Avg(Fiyat) From Urun where Tip='Kiralık'";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<decimal>(query);
+                return values;
+            }
         }
 
         public int OrtalamaOdaSayısı()
         {
-            throw new NotImplementedException();
+            string query = "Select Avg(OdaSayisi) From UrunDetay";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
-        public decimal OrtalamaSatılıkUrun()
+        public decimal OrtalamaSatılıkUrunFiyat()
         {
-            throw new NotImplementedException();
+            string query = "Select Avg(Fiyat) From Urun where Tip='Satılık'";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<decimal>(query);
+                return values;
+            }
         }
 
         public int PasifKategoriSayısı()
         {
-            throw new NotImplementedException();
+            string query = "Select  Count(*) From Kategori Where KategoriDurum=0";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
+
         }
 
         public decimal SonEklenenUrun()
         {
-            throw new NotImplementedException();
+            string query = "Select Top(1) Fiyat From Urun Order By UrunID Desc";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<decimal>(query);
+                return values;
+            }
         }
 
         public int UrunSayısı()
         {
-            throw new NotImplementedException();
+            string query = "Select Count(*) From Urun";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
     }
 }

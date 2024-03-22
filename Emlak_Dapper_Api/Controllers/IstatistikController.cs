@@ -27,5 +27,83 @@ namespace Emlak_Dapper_Api.Controllers
         {
             return Ok(_istatistikDepo.AktifPersonelSayısı());
         }
+
+        [HttpGet("DaireSayısı")]
+        public IActionResult DaireSayısı()
+        {
+            return Ok(_istatistikDepo.DaireSayısı());
+        }
+
+        [HttpGet("OrtalamaKiralıkUrunFiyat")]
+        public IActionResult OrtalamaKiralıkUrunFiyat()
+        {
+            return Ok(_istatistikDepo.OrtalamaKiralıkUrunFiyat());
+        }
+
+        [HttpGet("OrtalamaSatılıkUrunFiyat")]
+        public IActionResult OrtalamaSatılıkUrunFiyat()
+        {
+            return Ok(_istatistikDepo.OrtalamaSatılıkUrunFiyat());
+        }
+
+        [HttpGet("KategoriSayısı")]
+        public IActionResult KategoriSayısı()
+        {
+            return Ok(_istatistikDepo.KategoriSayısı());
+        }
+
+        [HttpGet("MaxKategoriIsimSayısı")]
+        public IActionResult MaxKategoriIsimSayısı()
+        {
+            return Ok(_istatistikDepo.MaxKategoriIsimSayısı());
+        }
+
+        [HttpGet("MaxSehirSayısı")]
+        public IActionResult MaxSehirSayısı()
+        {
+            return Ok(_istatistikDepo.MaxSehirSayısı());
+        }
+
+        [HttpGet("FarklıSehirSayısı")]
+        public IActionResult FarklıSehirSayısı()
+        {
+            return Ok(_istatistikDepo.FarklıSehirSayısı());
+        }
+        [HttpGet("MaxPersonelIsimSayısı")]
+        public IActionResult MaxPersonelIsimSayısı()
+        {
+            return Ok(_istatistikDepo.MaxPersonelIsimSayısı());
+        }
+
+        [HttpGet("SonEklenenUrun")]
+        public IActionResult SonEklenenUrun()
+        {
+            return Ok(_istatistikDepo.SonEklenenUrun());
+        }
+
+        [HttpGet("EnYeniBina")]
+        public IActionResult EnYeniBina()
+        {
+            return Ok(_istatistikDepo.EnYeniBina());
+        }
+
+        [HttpGet("EnEskiBina")]
+        public IActionResult EnEskiBina()
+        {
+            return Ok(_istatistikDepo.EnEskiBina());
+        }
+
+        [HttpGet("PasifKategoriSayısı")]
+        public IActionResult PasifKategoriSayısı()
+        {
+            return Ok(_istatistikDepo.PasifKategoriSayısı());
+        }
+
+        [HttpGet("UrunSayısı")]
+        public IActionResult UrunSayısı()
+        {
+            return Ok(_istatistikDepo.UrunSayısı());
+        }
+
     }
 }

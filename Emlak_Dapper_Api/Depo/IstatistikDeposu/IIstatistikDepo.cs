@@ -10,8 +10,8 @@ namespace Emlak_Dapper_Api.Depo.IstatistikDeposu
         int DaireSayısı();
         string MaxPersonelIsimSayısı();
         string MaxKategoriIsimSayısı();
-        decimal OrtalamaKiralıkUrun();
-        decimal OrtalamaSatılıkUrun();
+        decimal OrtalamaKiralıkUrunFiyat();
+        decimal OrtalamaSatılıkUrunFiyat();
         string MaxSehirSayısı();
         int FarklıSehirSayısı();
         decimal SonEklenenUrun();
