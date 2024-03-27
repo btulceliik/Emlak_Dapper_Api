@@ -34,7 +34,7 @@ namespace Emlak_Dapper_Api.Controllers
         }
 
         // Belirli bir kategoriyi silen endpoint
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> BizKimizDetaySil(int id)
         {
             _bizKimizDetayDepo.BizKimizDetaySil(id); // Belirli bir kategoriyi sil

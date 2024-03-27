@@ -5,16 +5,16 @@
 <!DOCTYPE html>
 <html lang="tr">
 
-@await Component.InvokeAsync("_YoneticiBaslangicDuzeni");
+@await Component.InvokeAsync("_YoneticiBaslangicDuzeni")
 
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
-        @await Component.InvokeAsync("_YoneticiYukleniyorDuzeni");
+        @await Component.InvokeAsync("_YoneticiYukleniyorDuzeni")
         <!-- Spinner End -->
 
         <!-- Sidebar Start -->
-        @await Component.InvokeAsync("_YoneticiSolMenuDuzeni");
+        @await Component.InvokeAsync("_YoneticiSolMenuDuzeni")
         <!-- Sidebar End -->
 
 
@@ -22,7 +22,7 @@
         <div class="content">
 
             <!-- Navbar Start -->
-            @await Component.InvokeAsync("_YoneticiGezinmeCubuguDuzeni"); 
+            @await Component.InvokeAsync("_YoneticiGezinmeCubuguDuzeni")
             <!-- Navbar End -->
 
 
@@ -32,7 +32,7 @@
 
 
             <!-- Footer Start -->
-            @await Component.InvokeAsync("_YoneticiAltBilgiDuzeni");
+            @await Component.InvokeAsync("_YoneticiAltBilgiDuzeni")
             <!-- Footer End -->
         </div>
         <!-- Content End -->
@@ -42,7 +42,7 @@
     </div>
 
     <!-- JavaScript Libraries -->
-    @await Component.InvokeAsync("_YoneticiScript");
+    @await Component.InvokeAsync("_YoneticiScript")
 </body>
 
 </html>
