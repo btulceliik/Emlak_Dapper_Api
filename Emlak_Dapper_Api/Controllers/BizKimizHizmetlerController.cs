@@ -1,4 +1,4 @@
-﻿using Emlak_Dapper_Api.Depo.HizmetDeposu;
+﻿using Emlak_Dapper_Api.Depo.BizKimizHizmetDeposu;
 using Emlak_Dapper_Api.Dtos.BizKimizHizmetDtos;
 using Microsoft.AspNetCore.Mvc;
 

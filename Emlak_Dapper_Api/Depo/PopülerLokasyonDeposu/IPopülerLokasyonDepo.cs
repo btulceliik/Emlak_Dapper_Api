@@ -6,5 +6,11 @@ namespace Emlak_Dapper_Api.Depo.PopülerLokasyonDeposu
 	{ 
 		Task<List<PopülerLokasyonSonucDto>> GetAllPopülerLokasyonAsync();
 
+		void PopülerLokasyonOlustur(PopülerLokasyonOlusturDto popülerLokasyonOlusturDto);
+
+		void PopülerLokasyonSil(int id);
+		void PopülerLokasyonGuncelle(PopülerLokasyonGuncelleDto popülerLokasyonGuncelleDto);
+		Task<PopülerLokasyonIDGetirDto> PopülerLokasyonGetir(int id);
+
 	}
 }

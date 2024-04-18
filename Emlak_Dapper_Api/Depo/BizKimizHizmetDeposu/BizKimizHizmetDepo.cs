@@ -1,8 +1,9 @@
 ﻿using Dapper;
+using Emlak_Dapper_Api.Depo.BizKimizHizmetDeposu;
 using Emlak_Dapper_Api.Dtos.BizKimizHizmetDtos;
 using Emlak_Dapper_Api.Models.DapperContext;
 
-namespace Emlak_Dapper_Api.Depo.HizmetDeposu
+namespace Emlak_Dapper_Api.Depo.BizKimizHizmetDeposu
 {
     public class BizKimizHizmetDepo : IBizKimizHizmetDepo
     {

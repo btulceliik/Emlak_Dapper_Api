@@ -1,0 +1,59 @@
+﻿@using Microsoft.AspNetCore.SignalR
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+<!-- Bu script SignalR bağlantısını oluşturur ve kategori sayısını günceller -->
+@section Scripts
+{
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <script type="text/javascript">
+                            $(document).ready(() => {
+                                // SignalR bağlantısı oluşturuluyor
+                                var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:44378/SignalRHub").build();
+                                // Bağlantı durumunu göstermek için bağlantı durumu öğesine metin ekleniyor
+                                $("#connstatus").text(connection.state);
+
+                                // Bağlantı başlatılıyor
+                                connection.start().then(() => {
+                                    // Bağlantı durumu güncelleniyor
+                                    $("#connstatus").text(connection.state);
+                                    // Belirli aralıklarla "KategoriSayısı" yöntemi çağrılıyor her 1snde bir istekte bulun
+                                    setInterval(() => {
+                                        connection.invoke("KategoriSayısı");
+                                    }, 1000);
+                                }).catch((err) => { console.log(err) });
+
+                                // Sunucudan gelen "KategoriSayısınıAl" olayını dinleme
+                                connection.on("KategoriSayısınıAl", (value) => {
+                                    // Kategori sayısını güncelleme
+                                    $("#kategoriSayısı").text(value);
+                                });
+
+                            });
+
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Bağlantı durumunu gösteren bölüm -->
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <div class="alert alert-warning">Bağlantı Durumu:<strong id="connstatus"></strong></div>
+    </div>
+
+    <!-- Kategori sayısını gösteren bölüm -->
+    <div class="col-md-8 offset-2">
+        <div class="alert alert-primary">Kategori Sayısı:<strong id="kategoriSayısı"></strong></div>
+    </div>
+</div>

@@ -11,6 +11,7 @@
         public string  kapakGorsel {get; set;}
         public string tip { get; set; }
         public string adres { get; set; }
+        public bool gununFirsatiMi { get; set; }
 
 
 

@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Yonetici/Index.cshtml";
+    int count = 0;
 }
 
 <div class="container-fluid pt-4 px-4">
@@ -19,36 +20,45 @@
                                 <th scope="col">İlçe</th>
                                 <th scope="col">Kategori</th>
                                 <th scope="col">Fiyat</th>
-                                <th scope="col">Tip</th>
+                                <th scope="col">Tür</th>
                                 <th scope="col">Sil</th>
                                 <th scope="col">Güncelle</th>
                                 <th scope="col">Sitede Gör</th>
+                                <th scope="col">Günün Fırsatı</th>
                             </tr>
                         </thead>
                         <tbody>
-
                             @foreach (var item in Model)
                             {
+                                count++;
                                 <tr>
-                                    <th scope="row">@item.urunID</th>
+                                    <th scope="row">@count</th>
                                     <td>@item.baslik</td>
                                     <td>@item.sehir</td>
                                     <td>@item.ilce</td>
                                     <td>@item.kategoriIsim</td>
                                     <td>@item.fiyat</td>
                                     <td>@item.tip</td>
-                                    <td><a href="/Urun/UrunSil/@item.urunID" class=" btn btn-outline-danger"> Sil </a></td>
-                                    <td><a href="/Urun/UrunGuncelle/@item.urunID" class=" btn btn-outline-success"> Güncelle </a></td>
-                                    <td><a href="/Urun/UrunDetay/@item.urunID" class=" btn btn-outline-primary"> Sitede Gör </a></td>
+                                    <td><a href="/Urun/UrunSil/@item.urunID" class="btn btn-outline-danger">Sil</a></td>
+                                    <td><a href="/Urun/UrunGuncelle/@item.urunID" class="btn btn-outline-success">Güncelle</a></td>
+                                    <td><a href="/Urun/UrunDetay/@item.urunID" class="btn btn-outline-primary">Sitede Gör</a></td>
+                                    <td>
+                                        @if (item.gununFirsatiMi == true)
+                                        {
+                                            <a href="/Urun/UrunGununFirsatiDegil/@item.urunID" class="btn btn-outline-secondary">Pasif Yap</a>
+                                        }
+                                        @if (item.gununFirsatiMi == false)
+                                        {
+                                            <a href="/Urun/UrunGununFirsati/@item.urunID" class="btn btn-outline-warning">Aktif Yap</a>
+                                        }
+                                    </td>
                                 </tr>
                             }
-
                         </tbody>
                     </table>
-                    <a href="/Urun/UrunOlustur/" class=" btn btn-outline-info"> Yeni İlan Girişi </a>
+                    <a href="/Urun/UrunOlustur/" class="btn btn-outline-info">Yeni İlan Girişi</a>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

@@ -16,7 +16,7 @@ namespace Emlak_Dapper_Api.Depo.BizKimizDeposu
         public async Task<BizKimizDetayIDGetirDto> BizKimizDetayGetir(int id)
         {
             string query = "Select * From BizKimizDetay Where BizKimizDetayID=@bizKimizDetayID";
-            // Belirli bir ID'ye sahip kategoriyi getiren SQL sorgusu
+            // Belirli bir ID'ye sahip verileri getiren SQL sorgusu
             var parameters = new DynamicParameters();
             parameters.Add("@bizKimizDetayID", id);
             // Parametre eklenir
@@ -33,7 +33,7 @@ namespace Emlak_Dapper_Api.Depo.BizKimizDeposu
         {
             string query = " Update BizKimizDetay Set Baslik=@baslik, AltBaslik= @altBaslik," +
                 " Aciklama1=@aciklama1, Aciklama2=@aciklama2 Where BizKimizDetayID= @bizKimizDetayID";
-            // Belirli bir ID'ye sahip kategoriyi güncelleyen SQL sorgusu
+            // Belirli bir ID'ye sahip verileri güncelleyen SQL sorgusu
             var parameters = new DynamicParameters();
             parameters.Add("@bizKimizDetayID", bizKimizDetayGuncelleDto.BizKimizDetayID);
             parameters.Add("@baslik", bizKimizDetayGuncelleDto.Baslik);
@@ -51,8 +51,9 @@ namespace Emlak_Dapper_Api.Depo.BizKimizDeposu
         public async void BizKimizDetayOlustur(BizKimizDetayOlusturDto bizKimizDetayOlusturDto)
         {
         
-            string query = "insert into BizKimizDetay (Baslik, AltBaslik, Aciklama1, Aciklama2) values (@baslik, @altBaslik, @aciklama1, @aciklama2)";
-                // Yeni kategori eklemek için SQL sorgusu
+            string query = "insert into BizKimizDetay (Baslik, AltBaslik, Aciklama1, Aciklama2) values " +
+                "(@baslik, @altBaslik, @aciklama1, @aciklama2)";
+                // Yeni detay eklemek için SQL sorgusu
                 var parameters = new DynamicParameters();
                 // Parametreler eklenir
                 parameters.Add("@baslik", bizKimizDetayOlusturDto.Baslik);
@@ -70,7 +71,7 @@ namespace Emlak_Dapper_Api.Depo.BizKimizDeposu
         public async void BizKimizDetaySil(int id)
         {
             string query = "Delete From BizKimizDetay Where BizKimizDetayID= @bizKimizDetayID";
-            // Belirli bir ID'ye sahip kategoriyi silen SQL sorgusu
+            // Belirli bir ID'ye sahip  silen SQL sorgusu
             var parameters = new DynamicParameters();
             parameters.Add("@bizKimizDetayID", id); // Parametre eklenir
             using (var connections = _context.CreateConnection())

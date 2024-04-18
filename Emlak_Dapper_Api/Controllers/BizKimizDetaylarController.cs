@@ -15,37 +15,35 @@ namespace Emlak_Dapper_Api.Controllers
         {
             _bizKimizDetayDepo = bizKimizDetayDepo;
         }
-
-
-        // Tüm kategorileri getiren endpoint
+        // Tüm detayları getiren endpoint
         [HttpGet]
         public async Task<IActionResult> BizKimizDetayListe()
         {
-            var values = await _bizKimizDetayDepo.GetAllBizKimizDetayAsync(); // Tüm kategorileri depodan al
-            return Ok(values); // Başarılı yanıt ve kategorileri içeren bir liste döndür
+            var values = await _bizKimizDetayDepo.GetAllBizKimizDetayAsync(); // Tüm detayları depodan al
+            return Ok(values); // Başarılı yanıt ve detayları içeren bir liste döndür
         }
 
-        // Yeni bir kategori oluşturan endpoint
+        // Yeni bir bizkimizdetay oluşturan endpoint
         [HttpPost]
         public async Task<IActionResult> BizKimizDetayOlustur(BizKimizDetayOlusturDto bizKimizDetayOlusturDto)
         {
-            _bizKimizDetayDepo.BizKimizDetayOlustur(bizKimizDetayOlusturDto); // Yeni kategori oluştur
+            _bizKimizDetayDepo.BizKimizDetayOlustur(bizKimizDetayOlusturDto); // Yeni detay oluştur
             return Ok("Hakkımızda kısmı başarılı bir şekilde eklendi. "); // Başarılı yanıt döndür
         }
 
-        // Belirli bir kategoriyi silen endpoint
+        // Belirli bir detayı silen endpoint
         [HttpDelete("{id}")]
         public async Task<IActionResult> BizKimizDetaySil(int id)
         {
-            _bizKimizDetayDepo.BizKimizDetaySil(id); // Belirli bir kategoriyi sil
+            _bizKimizDetayDepo.BizKimizDetaySil(id); // Belirli bir detayı sil
             return Ok("Hakkımızda kısmı başarılı bir şekilde silindi. "); // Başarılı yanıt döndür
         }
 
-        // Belirli bir kategoriyi güncelleyen endpoint
+        // Belirli bir detayı güncelleyen endpoint
         [HttpPut]
         public async Task<IActionResult> BizKimizDetay(BizKimizDetayGuncelleDto bizKimizDetayGuncelleDto)
         {
-            _bizKimizDetayDepo.BizKimizDetayGuncelle(bizKimizDetayGuncelleDto); // Belirli bir kategoriyi güncelle
+            _bizKimizDetayDepo.BizKimizDetayGuncelle(bizKimizDetayGuncelleDto); // Belirli bir detayı güncelle
             return Ok("Hakkımızda kısmı başarıyla günellendi. "); // Başarılı yanıt döndür
         }
 
@@ -53,8 +51,8 @@ namespace Emlak_Dapper_Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> BizKimizDetayGetir(int id)
         {
-            var value = await _bizKimizDetayDepo.BizKimizDetayGetir(id); // Belirli bir kategoriyi depodan al
-            return Ok(value); // Başarılı yanıt ve kategori bilgilerini içeren bir nesne döndür
+            var value = await _bizKimizDetayDepo.BizKimizDetayGetir(id); // Belirli bir detayı depodan al
+            return Ok(value); // Başarılı yanıt ve detay bilgilerini içeren bir nesne döndür
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Emlak_Dapper_UI.Dtos.BizKimizDtos;
+using Emlak_Dapper_UI.Dtos.BizKimizHizmetDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http;

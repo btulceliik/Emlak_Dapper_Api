@@ -1,39 +1,58 @@
 ﻿using Emlak_Dapper_UI.Dtos.PersonelDtos;
+using Emlak_Dapper_UI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace Emlak_Dapper_UI.Controllers
 {
+    [Authorize]
+
     public class PersonelController : Controller
     {
         //consume işlemi için 
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IGirisServis _girisServis;
+    
 
-        public PersonelController(IHttpClientFactory httpClientFactory)
+        public PersonelController(IHttpClientFactory httpClientFactory,IGirisServis girisServis,IHttpContextAccessor httpContextAccessor )
         {
             _httpClientFactory = httpClientFactory;
+            _girisServis= girisServis;
+            
         }
 
         public async Task<IActionResult> Index()
         {
-            //istemci consume işlemi için 
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44378/api/Personeller");
+            var user = User.Claims;
+            var userId = _girisServis.GetKullaniciID;
 
-            if (responseMessage.IsSuccessStatusCode)
-            //eğer işlem başarılıysa 200 ile 299 arasında
+
+            var token=User.Claims.FirstOrDefault(x=>x.Type== "emlakcimtoken")?.Value;
+            //Sayfaya erişim yapması için emlakcimtoken a ihtiyacı var
+
+            if (token != null)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();//gelen içeriği string olarak oku
-                var values = JsonConvert.DeserializeObject<List<PersonelSonucDto>>(jsonData);
-                //Listeleme işlemi için Deserialize kulllanılır
-                //Json değeri okuyup metin formatına dönüştürme işlemim jsondan gelen datayı UrunDepoDtos ile eşleştir
+                //istemci consume işlemi için 
+                var client = _httpClientFactory.CreateClient();
+                var responseMessage = await client.GetAsync("https://localhost:44378/api/Personeller");
 
-                return View(values);
+                if (responseMessage.IsSuccessStatusCode)
+                //eğer işlem başarılıysa 200 ile 299 arasında
+                {
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();//gelen içeriği string olarak oku
+                    var values = JsonConvert.DeserializeObject<List<PersonelSonucDto>>(jsonData);
+                    //Listeleme işlemi için Deserialize kulllanılır
+                    //Json değeri okuyup metin formatına dönüştürme işlemim jsondan gelen datayı UrunDepoDtos ile eşleştir
 
+                    return View(values);
+
+                } 
             }
             return View();
         }
+
         [HttpGet]
         public IActionResult PersonelOlustur()
         {

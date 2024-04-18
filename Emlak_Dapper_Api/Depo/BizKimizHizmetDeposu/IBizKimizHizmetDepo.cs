@@ -1,6 +1,6 @@
 ﻿using Emlak_Dapper_Api.Dtos.BizKimizHizmetDtos;
 
-namespace Emlak_Dapper_Api.Depo.HizmetDeposu
+namespace Emlak_Dapper_Api.Depo.BizKimizHizmetDeposu
 {
     public interface IBizKimizHizmetDepo
     {

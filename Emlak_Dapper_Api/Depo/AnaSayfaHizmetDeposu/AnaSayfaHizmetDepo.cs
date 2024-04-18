@@ -23,24 +23,64 @@ namespace Emlak_Dapper_Api.Depo.AnaSayfaHizmetDeposu
             }
         }
 
-        public void AnaSayfaHizmetGuncelle(AnaSayfaHizmetGuncelleDto hizmetguncelle)
+        public async  void AnaSayfaHizmetGuncelle(AnaSayfaHizmetGuncelleDto hizmetGuncelleDto)
         {
-            throw new NotImplementedException();
+            string query = " Update Hizmet Set Icon=@icon, Baslik=@baslik, Aciklama=@aciklama Where HizmetID= @hizmetID";
+            // Belirli bir ID'ye sahip kategoriyi güncelleyen SQL sorgusu
+            var parameters = new DynamicParameters();
+            parameters.Add("@hizmetID", hizmetGuncelleDto.HizmetID);
+            parameters.Add("@icon", hizmetGuncelleDto.Icon);
+            parameters.Add("@baslik", hizmetGuncelleDto.Baslik);
+            parameters.Add("@aciklama", hizmetGuncelleDto.Aciklama);
+
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters); // Sorgu çalıştırılır
+            }
         }
 
-        public void AnaSayfaHizmetOlustur(AnaSayfaHizmetOlusturDto hizmetolustur)
+        public async  void AnaSayfaHizmetOlustur(AnaSayfaHizmetOlusturDto hizmetOlusturDto)
         {
-            throw new NotImplementedException();
+            string query = "insert into Hizmet (Icon,Baslik, Aciklama) values (@icon, @baslik,  @aciklama)";
+            // Yeni kategori eklemek için SQL sorgusu
+            var parameters = new DynamicParameters();
+            // Parametreler eklenir
+            parameters.Add("@icon", hizmetOlusturDto.Icon);
+            parameters.Add("@baslik", hizmetOlusturDto.Baslik);
+            parameters.Add("@aciklama", hizmetOlusturDto.Aciklama);
+
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters); // Sorgu çalıştırılır
+            }
         }
 
-        public void AnaSayfaHizmetSil(int id)
+        public async void AnaSayfaHizmetSil(int id)
         {
-            throw new NotImplementedException();
+            string query = "Delete From Hizmet Where HizmetID= @hizmetID";
+            // Belirli bir ID'ye sahip kategoriyi silen SQL sorgusu
+            var parameters = new DynamicParameters();
+            parameters.Add("@hizmetID", id); // Parametre eklenir
+            using (var connections = _context.CreateConnection())
+            {
+                await connections.ExecuteAsync(query, parameters); // Sorgu çalıştırılır
+            }
         }
 
-        public Task<AnaSayfaHizmetGetirDto> AnaSayfaHizmetGetir(int id)
+        public async Task<AnaSayfaHizmetGetirDto> AnaSayfaHizmetGetir(int id)
         {
-            throw new NotImplementedException();
+            string query = "Select * From Hizmet Where HizmetID=@hizmetID";
+            // Belirli bir ID'ye sahip kategoriyi getiren SQL sorgusu
+            var parameters = new DynamicParameters();
+            parameters.Add("@hizmetID", id);
+            // Parametre eklenir
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryFirstOrDefaultAsync<AnaSayfaHizmetGetirDto>(query, parameters);
+                // Sorgu sonucunda dönen veriler alınır
+                return values;
+                // Veri geri döndürülür
+            }
         }
     }
 }

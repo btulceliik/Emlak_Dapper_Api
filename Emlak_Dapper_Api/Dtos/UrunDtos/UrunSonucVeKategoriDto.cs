@@ -11,8 +11,9 @@
         public string Adres { get; set; }
         public string Tip { get; set; }
         public string KategoriIsim { get; set; }
+        public bool GununFirsatiMi { get; set; }
 
-      
+
 
 
     }
